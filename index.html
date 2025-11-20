@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iStone - 未来，沉甸甸</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+            background-color: #000;
+            color: #f5f5f7;
+            overflow-x: hidden;
+        }
+
+        /* 动画效果 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #a8a8a8 0%, #ffffff 50%, #a8a8a8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        .nav-glass {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+        }
+
+        /* 石头悬浮旋转动画 */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-rock {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* 对比条 */
+        .stat-bar {
+            background: #333;
+            height: 4px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .stat-fill {
+            background: #fff;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- 导航栏 -->
+    <nav class="nav-glass fixed w-full z-50 h-12 flex items-center justify-center text-xs text-[#d6d6d6] gap-6 md:gap-8">
+        <i class="fa-brands fa-apple text-lg text-white cursor-pointer"></i>
+        <a href="#" class="hover:text-white transition">商店</a>
+        <a href="#" class="hover:text-white transition">Mac</a>
+        <a href="#" class="hover:text-white transition">iPad</a>
+        <a href="#" class="hover:text-white transition">iPhone</a>
+        <a href="#" class="hover:text-white transition">iStone</a>
+        <a href="#" class="hover:text-white transition">Air</a>
+        <i class="fa-solid fa-magnifying-glass hover:text-white cursor-pointer"></i>
+        <i class="fa-solid fa-bag-shopping hover:text-white cursor-pointer"></i>
+    </nav>
+
+    <!-- 二级导航 -->
+    <div class="bg-[#1d1d1f] text-white h-12 flex items-center justify-between px-4 md:px-32 sticky top-12 z-40 border-b border-[#424245]">
+        <div class="font-bold text-sm md:text-xl">iStone Pro</div>
+        <div class="flex gap-4 md:gap-6 text-xs items-center">
+            <a href="#" class="hover:text-gray-300">地质学</a>
+            <a href="#" class="hover:text-gray-300">重量</a>
+            <button class="bg-[#0071e3] text-white px-3 py-1 rounded-full hover:bg-[#0077ed] transition">预购</button>
+        </div>
+    </div>
+
+    <!-- 英雄区 -->
+    <section class="h-screen flex flex-col items-center justify-center bg-black text-center pt-20 relative overflow-hidden">
+        <div class="fade-in visible z-20 px-4">
+            <h2 class="text-[#888] text-lg md:text-xl font-bold mb-2">沉积岩。变质岩。火成岩。</h2>
+            <h1 class="text-6xl md:text-9xl font-bold tracking-tighter mb-6 text-gradient">iStone</h1>
+            <p class="text-xl md:text-3xl text-gray-400 max-w-2xl mx-auto">
+                我们有史以来打造过最重量级的手持设备。
+            </p>
+        </div>
+
+        <div class="flex gap-6 mt-8 mb-12 z-20">
+            <button class="bg-[#0071e3] text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-[#0077ed] transition">购买 RMB 7999 起</button>
+            <a href="#" class="text-[#2997ff] text-lg hover:underline flex items-center">观看发布会 (4小时) <i class="fa-solid fa-chevron-right text-xs ml-1"></i></a>
+        </div>
+
+        <!-- 产品展示 -->
+        <div class="relative w-[300px] h-[300px] md:w-[500px] md:h-[500px] flex items-center justify-center z-10 floating-rock">
+            <!-- CSS 绘制的石头 -->
+            <div class="w-48 h-40 md:w-64 md:h-56 bg-neutral-800 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] shadow-[inset_-10px_-10px_20px_rgba(0,0,0,0.8),10px_10px_50px_rgba(255,255,255,0.1)] relative overflow-hidden">
+                 <div class="absolute top-10 left-10 w-20 h-20 bg-neutral-700 rounded-full opacity-20 blur-xl"></div>
+                 <div class="absolute bottom-4 right-10 w-10 h-10 bg-neutral-600 rounded-full opacity-30 blur-md"></div>
+                 <!-- 石头上的 Logo -->
+                 <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-neutral-600 text-4xl opacity-50">
+                    <i class="fa-brands fa-apple"></i>
+                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 材质部分 -->
+    <section class="py-32 bg-[#101010]">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold mb-12 fade-in">
+                原生。<br> 纯粹。<br> <span class="text-[#6e6e73]">岩石。</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <p class="text-xl text-gray-300 leading-relaxed mb-6">
+                        我们深入库比蒂诺最偏远的停车场，只为寻找完美的骨料。
+                        每一块 iStone 都经过精挑细选，确保其毫无功能且密度惊人。
+                    </p>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        凭借 <span class="text-white font-bold">零赫兹的处理能力</span>，iStone <span class="text-white font-bold">啥事不做</span>的速度比以往任何时候都快。
+                    </p>
+                </div>
+                <div class="h-96 bg-[#1a1a1a] rounded-3xl overflow-hidden relative border border-[#333] flex items-center justify-center fade-in">
+                    <div class="text-center">
+                        <div class="text-6xl mb-4">🪨</div>
+                        <p class="text-sm text-gray-500 font-mono">实际大小</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 功能网格 -->
+    <section class="py-32 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-20 fade-in">一次巨大的进步。
+</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- 功能 1 -->
+                <div class="bg-[#1d1d1f] p-8 rounded-3xl fade-in h-full flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-battery-empty text-4xl text-gray-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">无限续航</h3>
+                        <p class="text-gray-400">
+                            因为它不用电。它就是块石头。它能坚持到宇宙热寂。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 功能 2 -->
+                <div class="bg-[#1d1d1f] p-8 rounded-3xl fade-in h-full flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-wifi text-4xl text-gray-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">100% 物理隔绝</h3>
+                        <p class="text-gray-400">
+                            我们制造过最安全的设备。没有黑客能攻破花岗岩的矿物密度。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 功能 3 -->
+                <div class="bg-[#1d1d1f] p-8 rounded-3xl fade-in h-full flex flex-col justify-between">
+                    <div>
+                        <i class="fa-solid fa-droplet text-4xl text-gray-500 mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2 text-white">抗水性能</h3>
+                        <p class="text-gray-400">
+                            把它扔进湖里，它会沉底，但绝不会短路。（不保证能捞回来）。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 连接性部分 -->
+    <section class="py-32 bg-[#f5f5f7] text-black text-center">
+        <div class="max-w-3xl mx-auto px-4">
+            <span class="font-bold text-orange-500 text-sm uppercase tracking-widest mb-4 block">兼容性</span>
+            <h2 class="text-5xl md:text-7xl font-bold mb-8">与 重力™ 无缝协作。</h2>
+            <p class="text-xl text-gray-600 mb-12">
+                松手。即落。<br>
+                iStone 采用 Apple 独有的重力引擎（艾萨克·牛顿的鬼魂），确保它永远向下掉落。
+            </p>
+            <div class="w-full h-2 bg-gray-300 rounded-full overflow-hidden mb-2">
+                <div class="h-full bg-black w-full"></div>
+            </div>
+            <p class="text-xs text-gray-500 text-right font-mono">重力连接强度：100%</p>
+        </div>
+    </section>
+
+    <!-- 环保部分 -->
+    <section class="py-32 bg-[#2e2e2e] text-white relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="fade-in">
+                <h2 class="text-4xl font-bold mb-6">大自然母亲认证。</h2>
+                <p class="text-lg text-gray-300 mb-6">
+                    通过移除屏幕、处理器、电池和包装，我们将碳足迹降至零。
+                </p>
+                <p class="text-lg text-gray-300">
+                    事实上，我们发货 iStone 时连盒子都不用。我们直接用无人机把它扔到你家门口。
+                </p>
+            </div>
+            <div class="flex justify-center fade-in">
+                 <i class="fa-solid fa-leaf text-[200px] text-green-500 opacity-80"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- 对比部分 -->
+    <section class="py-32 bg-black text-center">
+        <div class="max-w-5xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-16">哪款 iStone 适合你？</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                
+                <!-- 型号 1 -->
+                <div class="p-8 rounded-3xl border border-gray-800 hover:border-gray-600 transition cursor-pointer group">
+                    <h3 class="text-2xl font-bold mb-1">iStone mini</h3>
+                    <p class="text-sm text-gray-500 mb-6">尺寸完美，适合投掷。</p>
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <div class="w-16 h-12 bg-neutral-700 rounded-[40%] group-hover:scale-110 transition"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">重量</p>
+                            <p class="text-lg font-bold">0.5 磅</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">成分</p>
+                            <p class="text-lg font-bold">砾石</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-800">
+                            <p class="text-xl font-bold">RMB 3999</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 型号 2 -->
+                <div class="p-8 rounded-3xl border-2 border-white/20 bg-[#111] cursor-pointer group relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"></div>
+                    <h3 class="text-2xl font-bold mb-1">iStone</h3>
+                    <p class="text-sm text-gray-500 mb-6">静止物体的行业标准。</p>
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <div class="w-24 h-20 bg-neutral-600 rounded-[30%] group-hover:scale-110 transition"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">重量</p>
+                            <p class="text-lg font-bold">2.0 磅</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">成分</p>
+                            <p class="text-lg font-bold">花岗岩</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-800">
+                            <p class="text-xl font-bold">RMB 7999</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 型号 3 -->
+                <div class="p-8 rounded-3xl border border-gray-800 hover:border-gray-600 transition cursor-pointer group">
+                    <h3 class="text-2xl font-bold mb-1">iStone Pro Max</h3>
+                    <p class="text-sm text-gray-500 mb-6">尊贵（冤大头）的象征。</p>
+                    <div class="h-32 flex items-center justify-center mb-6">
+                        <div class="w-32 h-28 bg-neutral-500 rounded-[20%] group-hover:scale-110 transition border border-gray-600"></div>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">重量</p>
+                            <p class="text-lg font-bold">15.0 磅</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-gray-500 font-bold uppercase">成分</p>
+                            <p class="text-lg font-bold">大理石</p>
+                        </div>
+                        <div class="pt-4 border-t border-gray-800">
+                            <p class="text-xl font-bold">RMB 12999</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-[#f5f5f7] text-xs text-gray-500 py-12 border-t border-gray-300 mt-12">
+        <div class="max-w-5xl mx-auto px-4">
+            <div class="mb-8 border-b border-gray-300 pb-8">
+                <p class="mb-2">1. iStone 不兼容 Linux、Android 或“正常大脑”。用力投掷可兼容 Windows (窗户)。</p>
+                <p class="mb-2">2. 重量随地质年代变化。实际石头可能与渲染图略微不同。</p>
+                <p>3. 请勿食用 iStone。</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-2 md:mb-0">
+                    Copyright © 2025 Apple Inc. 保留所有权利。
+                </div>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:underline">隐私政策 （不存在）</a>
+                    <a href="#" class="hover:underline">地质条款</a>
+                    <a href="#" class="hover:underline">销售和退款 (别做梦了)</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动时淡入元素
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach((section) => {
+            observer.observe(section);
+        });
+    </script>
+
+</body>
+</html>
